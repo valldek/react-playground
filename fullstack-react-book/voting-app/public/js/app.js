@@ -6,6 +6,7 @@ class ProductList extends React.Component {
     }
 
     this.handleProductUpVote = this.handleProductUpVote.bind(this);
+    this.handleProductDownVote = this.handleProductDownVote.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +32,22 @@ class ProductList extends React.Component {
 
     // console.log(`${productId} was upvoted`);
   }
+  handleProductDownVote(productId) {
+    const nextProducts = this.state.products.map((product) => {
+      if (product.id === productId) {
+        return Object.assign({}, product, {
+          votes: product.votes - 1
+        });
+      } else {
+        return product;
+      }
+    });
+    this.setState({
+      products: nextProducts,
+    });
+
+    // console.log(`${productId} was upvoted`);
+  }
 
   render() {
     const products = this.state.products.sort((a, b) => b.votes - a.votes)
@@ -45,7 +62,8 @@ class ProductList extends React.Component {
           votes = {product.votes}
           submitterAvatarUrl = {product.submitterAvatarUrl}
           productImageUrl = {product.productImageUrl}
-          onVote = {this.handleProductUpVote}
+          onUpVote = {this.handleProductUpVote}
+          onDownVote = {this.handleProductDownVote}
         />
       )
     });
@@ -69,7 +87,11 @@ class Product extends React.Component {
   // }
 
   handleUpVote = () => {
-    this.props.onVote(this.props.id);
+    this.props.onUpVote(this.props.id);
+  }
+
+  handleDownVote = () => {
+    this.props.onDownVote(this.props.id)
   }
 
   render() {
@@ -82,6 +104,9 @@ class Product extends React.Component {
           <div className="header">
             <a onClick={this.handleUpVote}>
               <i className="large caret up icon" />
+            </a>
+            <a onClick={this.handleDownVote}>
+              <i className="large caret down icon" />
             </a>
             {this.props.votes}
           </div>
