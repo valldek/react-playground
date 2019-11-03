@@ -6,8 +6,11 @@ import JSXIntro from '../main-concepts/JSXIntro';
 import FunctionalComponent from '../main-concepts/FunctionalComponent';
 import ClassComponent from '../main-concepts/ClassComponent';
 import Comment from '../main-concepts/Comment';
+import Clock from '../main-concepts/Clock';
 
 const root = document.getElementById('root');
+
+
 
 // ReactDOM.render(<HelloWorld />, root);
 // ReactDOM.render(<JSXIntro />, root);
@@ -39,15 +42,37 @@ const root = document.getElementById('root');
 //   )
 // }
 
-const comment = {
-  author: {
-    name: "Name",
-    avatarUrl: "https://qwe.qwe.qwe"
-  },
-  text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, ducimus?",
-  date: new Date()
+// const comment = {
+//   author: {
+//     name: "Name",
+//     avatarUrl: "https://qwe.qwe.qwe"
+//   },
+//   text: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, ducimus?",
+//   date: new Date()
+// }
+
+// ReactDOM.render(
+//   <Comment author={comment.author} date={comment.date} text={comment.text} />, root
+// )
+
+
+// function tick () {
+//   ReactDOM.render(<Clock /*date={new Date()}*/ />, root);
+// }
+
+// setInterval(tick, 1000);
+
+// ReactDOM.render(<Clock />, root);
+
+
+function App () {
+  return (
+    <div>
+      <Clock />
+      <Clock />
+      <Clock />
+    </div>
+  )
 }
 
-ReactDOM.render(
-  <Comment author={comment.author} date={comment.date} text={comment.text} />, root
-)
+ReactDOM.render(<App />, root);
