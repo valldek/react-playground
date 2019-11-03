@@ -90,4 +90,4 @@ window.client = (function () {
     stopTimer,
     deleteTimer,
   };
-}());
+})();
