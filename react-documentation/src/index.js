@@ -7,6 +7,8 @@ import FunctionalComponent from '../main-concepts/FunctionalComponent';
 import ClassComponent from '../main-concepts/ClassComponent';
 import Comment from '../main-concepts/Comment';
 import Clock from '../main-concepts/Clock';
+import ActionLink from '../main-concepts/ActionLink';
+import Toggle from '../main-concepts/Toggle';
 
 const root = document.getElementById('root');
 
@@ -65,14 +67,19 @@ const root = document.getElementById('root');
 // ReactDOM.render(<Clock />, root);
 
 
-function App () {
-  return (
-    <div>
-      <Clock />
-      <Clock />
-      <Clock />
-    </div>
-  )
-}
+// function App () {
+//   return (
+//     <div>
+//       <Clock />
+//       <Clock />
+//       <Clock />
+//     </div>
+//   )
+// }
 
-ReactDOM.render(<App />, root);
+// ReactDOM.render(<App />, root);
+
+// # Handling Events
+
+// ReactDOM.render(<ActionLink />, root);
+ReactDOM.render(<Toggle />, root);
