@@ -9,6 +9,10 @@ import Comment from '../main-concepts/Comment';
 import Clock from '../main-concepts/Clock';
 import ActionLink from '../main-concepts/ActionLink';
 import Toggle from '../main-concepts/Toggle';
+import Greeting from '../main-concepts/Greeting';
+import LoginControl from '../main-concepts/LoginControl';
+import Mailbox from '../main-concepts/Mailbox';
+import Page from '../main-concepts/Page';
 
 const root = document.getElementById('root');
 
@@ -82,4 +86,21 @@ const root = document.getElementById('root');
 // # Handling Events
 
 // ReactDOM.render(<ActionLink />, root);
-ReactDOM.render(<Toggle />, root);
+// ReactDOM.render(<Toggle />, root);
+
+
+// # Conditional Rendering
+// ReactDOM.render(<Greeting isLoggedIn={false} />, root);
+
+// ReactDOM.render(<LoginControl />, root);
+
+// const messages = ['React', 'Re: React', 'Re: Re: React'];
+
+// ReactDOM.render(<Mailbox unreadMessages={messages} />, root)
+
+
+// ReactDOM.render(
+//   <Page />, root
+// )
+
+// # Lists and Keys
