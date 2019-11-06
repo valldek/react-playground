@@ -20,6 +20,7 @@ import NameForm from '../main-concepts/NameForm';
 import EssayForm from '../main-concepts/EssayForm';
 import FlavorForm from '../main-concepts/FlavorForm';
 import Reservation from '../main-concepts/Reservation';
+import Calculator from '../main-concepts/Calculator';
 
 const root = document.getElementById('root');
 
@@ -140,4 +141,9 @@ const root = document.getElementById('root');
 // ReactDOM.render(<EssayForm />, root);
 
 // ReactDOM.render(<FlavorForm />, root);
-ReactDOM.render(<Reservation />, root);
+// ReactDOM.render(<Reservation />, root);
+
+// # lifting state up
+ReactDOM.render(
+  <Calculator />, root
+);
