@@ -16,6 +16,10 @@ import Page from '../main-concepts/Page';
 import ListItems from '../main-concepts/ListItems';
 import NumberList from '../main-concepts/NumberList';
 import Blog from '../main-concepts/Blog';
+import NameForm from '../main-concepts/NameForm';
+import EssayForm from '../main-concepts/EssayForm';
+import FlavorForm from '../main-concepts/FlavorForm';
+import Reservation from '../main-concepts/Reservation';
 
 const root = document.getElementById('root');
 
@@ -114,17 +118,26 @@ const root = document.getElementById('root');
 // const numbers = [1, 2, 3, 4, 5];
 // ReactDOM.render(<NumberList numbers={numbers} />, root);
 
-const posts = [
-  {
-    id: 1,
-    title: 'Hello World',
-    content: 'Welcome to learning React!'
-  },
-  {
-    id: 2,
-    title: 'Installation',
-    content: 'You can install React from npm'
-  }
-];
+// const posts = [
+//   {
+//     id: 1,
+//     title: 'Hello World',
+//     content: 'Welcome to learning React!'
+//   },
+//   {
+//     id: 2,
+//     title: 'Installation',
+//     content: 'You can install React from npm'
+//   }
+// ];
 
-ReactDOM.render(<Blog posts={posts} />, root);
+// ReactDOM.render(<Blog posts={posts} />, root);
+
+// # Forms
+
+// ReactDOM.render(<NameForm />, root);
+
+// ReactDOM.render(<EssayForm />, root);
+
+// ReactDOM.render(<FlavorForm />, root);
+ReactDOM.render(<Reservation />, root);
