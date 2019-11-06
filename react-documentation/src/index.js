@@ -13,6 +13,9 @@ import Greeting from '../main-concepts/Greeting';
 import LoginControl from '../main-concepts/LoginControl';
 import Mailbox from '../main-concepts/Mailbox';
 import Page from '../main-concepts/Page';
+import ListItems from '../main-concepts/ListItems';
+import NumberList from '../main-concepts/NumberList';
+import Blog from '../main-concepts/Blog';
 
 const root = document.getElementById('root');
 
@@ -104,3 +107,24 @@ const root = document.getElementById('root');
 // )
 
 // # Lists and Keys
+
+// ReactDOM.render(<ListItems />, root);
+
+
+// const numbers = [1, 2, 3, 4, 5];
+// ReactDOM.render(<NumberList numbers={numbers} />, root);
+
+const posts = [
+  {
+    id: 1,
+    title: 'Hello World',
+    content: 'Welcome to learning React!'
+  },
+  {
+    id: 2,
+    title: 'Installation',
+    content: 'You can install React from npm'
+  }
+];
+
+ReactDOM.render(<Blog posts={posts} />, root);
