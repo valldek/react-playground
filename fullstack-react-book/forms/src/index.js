@@ -4,23 +4,26 @@ import './semantic-ui/semantic.min.css';
 import './index.css';
 
 import One from './01-basic-button.js';
-import Two from './02-basic-button.js';
-import Three from './03-basic-input.js';
-import Four from './04-basic-input.js';
-import Five from './05-state-input.js';
-import Six from './06-state-input-multi.js';
-import Seven from './07-basic-validation.js';
-import Eight from './08-field-component-form.js';
-import Nine from './09-async-fetch.js';
-import Ten from './10-remote-persist.js';
-import Eleven from './11-redux-app.js';
+// import Two from './02-basic-button.js';
+// import Three from './03-basic-input.js';
+// import Four from './04-basic-input.js';
+// import Five from './05-state-input.js';
+// import Six from './06-state-input-multi.js';
+// import Seven from './07-basic-validation.js';
+// import Eight from './08-field-component-form.js';
+// import Nine from './09-async-fetch.js';
+// import Ten from './10-remote-persist.js';
+// import Eleven from './11-redux-app.js';
+
+// const routes = [
+//   One, Two, Three, Four, Five,
+//   Six, Seven, Eight, Nine,
+//   Ten, Eleven,
+// ];
 
 const routes = [
-  One, Two, Three, Four, Five,
-  Six, Seven, Eight, Nine,
-  Ten, Eleven,
-];
-
+  One
+]
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));
 const loc = location.hash.replace('#/', '');
@@ -58,7 +61,7 @@ function createRoute(nStr) {
   return (
     <div className="ui container">
       {React.createElement(routes[i])}
-      <div style={navStyle} 
+      <div style={navStyle}
            className='ui fluid three item pagination menu'>
         { isFirst ? '' : <a href={`#/${i}`} className='item'>{'<'}</a> }
         <a href={location.href.replace(location.hash, '')}
