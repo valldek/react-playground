@@ -1,13 +1,9 @@
 import React from 'react';
 
-class One extends React.Component {
-  static displayName = "01-basic-button";
+class Two extends React.Component {
+  static displayName = "02-basic-button";
 
-  onGreatClick = (evt) => {
-    console.log(`User clicked button: ${evt.target.value}`)
-  }
-
-  onAmazingClick = (evt) => {
+  onButtonClick = (evt) => {
     console.log(`User clicked button: ${evt.target.value}`)
   }
 
@@ -19,14 +15,14 @@ class One extends React.Component {
           type="button"
           name="button-1"
           value="great"
-          onClick={this.onGreatClick}
+          onClick={this.onButtonClick}
         >Great
         </button>
         <button
           type="button"
           name="button-2"
           value="amazing"
-          onClick={this.onAmazingClick}
+          onClick={this.onButtonClick}
         >Amazing
         </button>
       </div>
@@ -34,4 +30,4 @@ class One extends React.Component {
   }
 }
 
-export default One;
+export default Two;
