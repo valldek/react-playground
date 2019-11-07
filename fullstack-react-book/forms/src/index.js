@@ -9,7 +9,7 @@ import Three from './03-basic-input.js';
 import Four from './04-basic-input.js';
 import Five from './05-state-input.js';
 import Six from './06-state-input-multi.js';
-// import Seven from './07-basic-validation.js';
+import Seven from './07-basic-validation.js';
 // import Eight from './08-field-component-form.js';
 // import Nine from './09-async-fetch.js';
 // import Ten from './10-remote-persist.js';
@@ -22,7 +22,7 @@ import Six from './06-state-input-multi.js';
 // ];
 
 const routes = [
-  One, Two, Three, Four, Five, Six
+  One, Two, Three, Four, Five, Six, Seven
 ]
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));
