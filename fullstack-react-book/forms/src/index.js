@@ -5,7 +5,7 @@ import './index.css';
 
 import One from './01-basic-button.js';
 import Two from './02-basic-button.js';
-// import Three from './03-basic-input.js';
+import Three from './03-basic-input.js';
 // import Four from './04-basic-input.js';
 // import Five from './05-state-input.js';
 // import Six from './06-state-input-multi.js';
@@ -22,7 +22,7 @@ import Two from './02-basic-button.js';
 // ];
 
 const routes = [
-  One, Two
+  One, Two, Three
 ]
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));
