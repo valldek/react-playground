@@ -13,7 +13,7 @@ import Seven from './07-basic-validation.js';
 import Eight from './08-field-component-form.js';
 import Nine from './09-async-fetch.js';
 import Ten from './10-remote-persist.js';
-// import Eleven from './11-redux-app.js';
+import Eleven from './11-redux-app.js';
 
 // const routes = [
 //   One, Two, Three, Four, Five,
@@ -22,7 +22,7 @@ import Ten from './10-remote-persist.js';
 // ];
 
 const routes = [
-  One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten
+  One, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Eleven
 ]
 const location = window.location;
 window.addEventListener('hashchange', location.reload.bind(location));
