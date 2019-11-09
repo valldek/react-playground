@@ -56,3 +56,57 @@ act = Modash.camelCase(str);
 exp = 'customerRespondedAt';
 
 assertEqual('`camelCase()`: string with underscores', act, exp);
+
+// # 3
+
+describe('My test Suite', () => {
+  it('`true` should be `true`', () => {
+    expect(true).toBe(true);
+  });
+
+  it('`false` should be `false`', () => {
+    expect(false).toBe(false);
+  });
+});
+
+// # 4, 5, 6
+
+describe ('Modash', () => {
+  describe ('`truncate()`', () => {
+    const string = 'there was one catch, and that was CATCH-22';
+    it ('truncates a string', () => {
+      expect(
+        Modash.truncate(string, 19)
+      ).toEqual('there was one catch...');
+    });
+
+    it (' no-ops if <= length', () => {
+      expect(
+        Modash.truncate(string)
+      ).toEqual(string);
+    });
+  });
+
+  describe('capitalize()', () => {
+    it ('capitalizes first letter, lowercases rest', () => {
+      const string = 'there was one catch, and that was CATCH-22';
+      expect(Modash.capitalize(string)).toEqual('There was one catch, and that was catch-22');
+    });
+  });
+
+  describe('camelCase()', () => {
+    it('camelizes string with spaces', () => {
+      const string = 'customer responded at';
+      expect(
+        Modash.camelCase(string)
+      ).toEqual('customerRespondedAt');
+    });
+
+    it('camelizes string with underscores', () => {
+      const string = 'customer_responded_at';
+      expect(
+        Modash.camelCase(string)
+      ).toEqual('customerRespondedAt');
+    });
+  });
+});
