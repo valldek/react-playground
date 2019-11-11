@@ -9,13 +9,19 @@ jest.mock('../Client');
 
 describe('FoodSearch', () => {
   let wrapper;
+  const onFoodClick = jest.fn();
 
   beforeEach(() => {
-    wrapper = shallow(<FoodSearch />)
+    wrapper = shallow(
+      <FoodSearch
+        onFoodClick={onFoodClick}
+      />
+    )
   });
 
   afterEach(() => {
     Client.search.mockClear();
+    onFoodClick.mockClear()
   });
 
   it ('should not display the remove icon', () => {
@@ -50,13 +56,13 @@ describe('FoodSearch', () => {
       .toBe(1);
     });
 
-    it('...todo...', () => {
-      const firstInvocation = Client.search.mock.calls[0];
-      console.log('First invocation:');
-      console.log(firstInvocation);
-      console.log('All invocations: ');
-      console.log(Client.search.mock.calls);
-    });
+    // it('...todo...', () => {
+    //   const firstInvocation = Client.search.mock.calls[0];
+    //   console.log('First invocation:');
+    //   console.log(firstInvocation);
+    //   console.log('All invocations: ');
+    //   console.log(Client.search.mock.calls);
+    // });
 
     it('should call `Client.search() with `value`', () => {
       const invocationArgs = Client.search.mock.calls[0];
@@ -66,15 +72,62 @@ describe('FoodSearch', () => {
     });
 
     describe('and API returns results', () => {
+      const foods = [
+        {
+          description: 'Broccolini',
+          kcal: '100',
+          protein_g: '11',
+          fat_g: '21',
+          carbohydrate_g: '31',
+        },
+        {
+          description: 'Broccoli rabe',
+          kcal: '200',
+          protein_g: '12',
+          fat_g: '22',
+          carbohydrate_g: '32',
+        },
+      ];
       beforeEach(() => {
-        // ... simulate API returning results
+        const invocationArgs = Client.search.mock.calls[0];
+        const cb = invocationArgs[1];
+        cb(foods);
+        wrapper.update();
       });
+
+      it ('should set the state property foods', () => {
+        expect(wrapper.state().foods)
+        .toEqual(foods);
+      });
+
+      it ('should display two rows', () => {
+        expect(wrapper.find('tbody tr').length)
+        .toEqual(2);
+      });
+
+      it ('should render the description of first food', () => {
+        expect(wrapper.html())
+        .toContain(foods[0].description)
+      });
+
+      it ('should render the description of second food', () => {
+        expect(wrapper.html())
+        .toContain(foods[1].description);
+      });
+
 
       // ... specs
 
       describe('then user clicks food item', () => {
         beforeEach(() => {
-          // ... simulate user clicking food item
+          const foodRow = wrapper.find('tbody tr').first();
+          foodRow.simulate('click');
+        });
+
+        it('should call prop `onFoodClick` with `food`', () => {
+          const food = foods[0];
+          expect(onFoodClick.mock.calls[0])
+          .toEqual([ food ]);
         });
 
         // ... specs
