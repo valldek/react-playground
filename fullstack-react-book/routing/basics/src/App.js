@@ -1,113 +1,63 @@
 import React from 'react';
-import createHistory from 'history/createBrowserHistory';
-import PropTypes from 'prop-types';
-
-const Route = ({ path, component}, { location }) => {
-  const pathname = location.pathname;
-
-  if (pathname.match(path)) {
-    return (
-      React.createElement(component)
-    );
-  }
-
-  return null;
-}
-
-Route.contextTypes = {
-  location: PropTypes.object
-}
-
-const Link = ({to, children}, { history }) => (
-  <a
-    onClick={(evt) => {
-      evt.preventDefault();
-      history.push(to);
-    }}
-    href={to}
-  >
-    {children}
-  </a>
-);
-
-Link.contextTypes = {
-  history: PropTypes.object,
-}
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  Switch
+} from 'react-router-dom';
 
 const App = () => (
-
   <Router>
-    <div className="ui text container">
-      <h2 className="ui dividing header">Which body of water?</h2>
+    <div
+      className='ui text container'
+    >
+      <h2 className='ui dividing header'>
+        Which body of water?
+      </h2>
 
       <ul>
         <li>
-          <Link to="/atlantic">
+          <Link to='/atlantic'>
             <code>/atlantic</code>
           </Link>
         </li>
         <li>
-          <Link to="/pacific">
+          <Link to='/pacific'>
             <code>/pacific</code>
           </Link>
         </li>
         <li>
-          <Link to="/black-sea">
+          <Link to='/black-sea'>
             <code>/black-sea</code>
           </Link>
         </li>
       </ul>
 
       <hr />
-
-      <Route path="/atlantic" component={Atlantic} />
-      <Route path="/pacific" component={Pacific} />
+      <Switch>
+      <Route path='/atlantic/ocean' render={() => (
+        <div>
+          <h3>Atlantic Ocean — Again!</h3>
+          <p>
+            Also known as "The Pond."
+          </p>
+        </div>
+      )} />
+      <Route path='/atlantic' component={Atlantic} />
+      <Route path='/pacific' component={Pacific} />
       <Route path='/black-sea' component={BlackSea} />
+
+      {/* This solution is problematic */}
+      <Route path='/' render={() => (
+        <h3>
+          Welcome! Select a body of saline water above.
+        </h3>
+      )} />
+      </Switch>
     </div>
   </Router>
 );
-
-class Redirect extends React.Component {
-
-  static contextTypes = {
-    history: PropTypes.object,
-  }
-
-  componentDidMount() {
-    const history = this.context.history;
-    const to = this.props.to;
-    history.push(to);
-  }
-
-  render() {
-    return null;
-  }
-}
-
-class Router extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.history = createHistory();
-    this.history.listen(() => this.forceUpdate());
-  }
-
-  static childContextTypes = {
-    history: PropTypes.object,
-    location: PropTypes.object
-  }
-
-  getChildContext() {
-    return {
-      history: this.history,
-      location: window.location,
-    };
-  }
-
-  render() {
-    return this.props.children;
-  }
-}
 
 const Atlantic = () => (
   <div>
