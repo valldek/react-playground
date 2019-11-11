@@ -1,33 +1,89 @@
 import React from 'react';
+import createHistory from 'history/createBrowserHistory';
+import PropTypes from 'prop-types';
 
-class App extends React.Component {
-  render() {
+const Route = ({ path, component}, { location }) => {
+  const pathname = location.pathname;
+
+  if (pathname.match(path)) {
     return (
-      <div
-        className='ui text container'
-      >
-        <h2 className='ui dividing header'>
-          Which body of water?
-        </h2>
-
-        <ul>
-          <li>
-            <a href='/atlantic'>
-              <code>/atlantic</code>
-            </a>
-          </li>
-          <li>
-            <a href='/pacific'>
-              <code>/pacific</code>
-            </a>
-          </li>
-        </ul>
-
-        <hr />
-
-        {/* We'll insert the Route components here */}
-      </div>
+      React.createElement(component)
     );
+  }
+
+  return null;
+}
+
+Route.contextTypes = {
+  location: PropTypes.object
+}
+
+const Link = ({to, children}, { history }) => (
+  <a
+    onClick={(evt) => {
+      evt.preventDefault();
+      history.push(to);
+    }}
+    href={to}
+  >
+    {children}
+  </a>
+);
+
+Link.contextTypes = {
+  history: PropTypes.object,
+}
+
+const App = () => (
+
+  <Router>
+    <div className="ui text container">
+      <h2 className="ui dividing header">Which body of water?</h2>
+
+      <ul>
+        <li>
+          <Link to="/atlantic">
+            <code>/atlantic</code>
+          </Link>
+        </li>
+        <li>
+          <Link to="/pacific">
+            <code>/pacific</code>
+          </Link>
+        </li>
+      </ul>
+
+      <hr />
+
+      <Route path="/atlantic" component={Atlantic} />
+      <Route path="/pacific" component={Pacific} />
+    </div>
+  </Router>
+)
+
+
+class Router extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.history = createHistory();
+    this.history.listen(() => this.forceUpdate());
+  }
+
+  static childContextTypes = {
+    history: PropTypes.object,
+    location: PropTypes.object
+  }
+
+  getChildContext() {
+    return {
+      history: this.history,
+      location: window.location,
+    };
+  }
+
+  render() {
+    return this.props.children;
   }
 }
 
