@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 
 import Album from './Album';
+import VerticalMenu from './VerticalMenu';
 import { client } from '../Client';
 
 const ALBUM_IDS = [
@@ -44,7 +46,7 @@ class AlbumsContainer extends Component {
             className='ui six wide column'
             style={{ maxWidth: 250 }}
           >
-            {/* VerticalMenu will go here */}
+            <VerticalMenu albums={this.state.albums} />
           </div>
           <div className='ui ten wide column'>
             {
